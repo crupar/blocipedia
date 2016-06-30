@@ -1,0 +1,11 @@
+<h1>All Wikis</h1>
+<% @wikis.each do |post| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <p><%= link_to wiki.title, wiki %></p>
+        </h4>
+      </div>
+    </div>
+
+<% end %>
