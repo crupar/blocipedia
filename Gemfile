@@ -6,6 +6,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'pundit'
+gem 'stripe'
+gem 'turbolinks'
 
 group :production do
   gem 'pg'

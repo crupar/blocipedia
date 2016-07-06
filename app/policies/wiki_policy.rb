@@ -33,7 +33,6 @@ class WikiPolicy < ApplicationPolicy
 
     def initialize(user, scope) # wiki,
       @user = user
-      # @wiki = wiki
       @scope = scope
     end
 
@@ -45,16 +44,12 @@ class WikiPolicy < ApplicationPolicy
          all_wikis = scope.all
          all_wikis.each do |wiki|
            if wiki || wiki.user == user #
-             wikis << wiki 
+             wikis << wiki
            end
          end
-       else # this is the lowly standard user
+       else # this is the  standard user
          all_wikis = scope.all
-         all_wikis.each do |wiki|
-           if wiki.public?
-             wikis << wiki #
-           end
-         end
+         wikis = scope.all
        end
        wikis # return the wikis array we've built up
      end
