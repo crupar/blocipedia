@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :wikis
+  resources :users, only: [:show, :index] do
+    post 'premium_to_standard' => 'users#premium_to_standard', as: :premium_to_standard
+  end
+
 
   get 'about' => 'welcome#about'
 
   root 'welcome#index'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

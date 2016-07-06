@@ -22,6 +22,12 @@
       <div class="form-group">
         <%= f.submit "Save", class: 'btn btn-success' %>
       </div>
+      <% unless current_user.standard? %>
+     <div class="form-group">
+       <%= f.check_box :public, {}, false, true %> Private wiki
+     </div>
+   <% end %>
+
     <% end %>
   </div>
 </div>
