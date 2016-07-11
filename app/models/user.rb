@@ -1,39 +1,34 @@
 class User < ActiveRecord::Base
 
-#enum role: [:standard, :editor, :admin]
-#after_initialize :set_default_role, :if => :new_record?
-has_many :wikis
-devise :database_authenticatable, :registerable,
-       :recoverable, :rememberable, :trackable, :validatable
-before_create :default_user_role_standard
+  #enum role: [:standard, :editor, :admin]
+  #after_initialize :set_default_role, :if => :new_record?
+  has_many :wikis
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  #change later if you make set role in database
+  #before_create :set_role
 
 
-def standard?
-  role == 'standard'
-end
-
-def premium?
-  role == 'premium'
-end
-
-def admin?
-  role == 'admin'
-end
-
-def publicize_wikis_if_standard
-  if standard?
-    wikis.each do |wiki|
-      wiki.public = true
-      wiki.save
-    end
+  def standard?
+    role == 'standard'
   end
-end
 
-private
+  def premium?
+    role == 'premium'
+  end
 
-def default_user_role_standard
-  self.role ||= 'standard'
-end
+  def admin?
+    role == 'admin'
+  end
 
+  def downgrade_account
+    wikis.update all(public: true)
+  end
+
+  private
+
+  def set_role
+    self.role ||= 'standard'
+  end
 
 end

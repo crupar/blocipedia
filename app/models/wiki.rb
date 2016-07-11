@@ -4,11 +4,9 @@ class Wiki < ActiveRecord::Base
 
 
   default_scope { order(title: :asc) }
-  
+
   def default_wiki_public
-    if self.public.nil?
-      self.public = true
-    end
+    self.public ||= true
   end
 
 end
