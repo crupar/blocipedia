@@ -1,11 +1,4 @@
 <html>
-<head>
-  <title>Blocipedia</title>
-  <meta name="viewport" content="width=depth-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
 
 <body>
 <h1>Wiki Entries</h1>
@@ -17,7 +10,7 @@
         <div class="media-body">
 
           <h4 class="media-heading">
-            <%= link_to wiki.title, wiki %>
+            <%= link_to wiki.title.capitalize, wiki %>
           </h4>
 
 

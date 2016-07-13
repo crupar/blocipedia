@@ -22,6 +22,21 @@ User.create!(
   role: "admin"
 )
 
+
+User.create!(
+    email:      "standard@standard.com",
+    password:   "helloworld",
+    role:       "standard"
+)
+
+User.create!(
+    email:      "premium@premium.com",
+    password:   'helloworld',
+    role:       'premium'
+)
+
+
+
 puts "Seed finished"
 puts "#{Wiki.count} wikis created"
 puts "#{User.count} users created"

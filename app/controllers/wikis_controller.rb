@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = policy_scope(Wiki)
+    @wikis = Wiki.all.sort{|a,b| a <=> b}
   end
 
   def show

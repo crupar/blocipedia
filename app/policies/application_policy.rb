@@ -19,15 +19,15 @@ class ApplicationPolicy
   end
 
   def new?
-    false
+    create?
   end
 
   def update?
-    false
+    user.present?
   end
 
   def edit?
-    false
+    update?
   end
 
   def destroy?

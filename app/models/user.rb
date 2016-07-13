@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   #enum role: [:standard, :editor, :admin]
   #after_initialize :set_default_role, :if => :new_record?
   has_many :wikis
+  has_one :subscription
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   #change later if you make set role in database

@@ -29,6 +29,17 @@ class UsersController < ApplicationController
     redirect_to users_path, :notice => "User deleted."
   end
 
+  def upgrade
+    @user = User.find(params[:id])
+    authorize user
+    redirect_to new_subscription_path
+  end
+
+  def downgrade
+    current_user.update_attributes(role: 'standard')
+    redirect_to edit_user_registration_path
+  end
+
   private
 
   def secure_params
