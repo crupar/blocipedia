@@ -7,7 +7,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'pundit'
 gem 'stripe'
-gem 'turbolinks'
+gem 'redcarpet'
 
 group :production do
   gem 'pg'

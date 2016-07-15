@@ -25,7 +25,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin? or user.premium?
+    user.admin? || user.premium?
   end
 
   class Scope
@@ -43,7 +43,7 @@ class WikiPolicy < ApplicationPolicy
        elsif user.role == 'premium'
          all_wikis = scope.all
          all_wikis.each do |wiki|
-           if wiki || wiki.user == user #
+           if wiki && wiki.user == user #
              wikis << wiki
            end
          end

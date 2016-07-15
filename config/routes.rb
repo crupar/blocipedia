@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'users/downgrade'
+
   devise_for :users
-  resources :wikis
   resources :users, only: [:show, :index] do
-    post 'premium_to_standard' => 'users#premium_to_standard', as: :premium_to_standard
+    post 'downgrade' => 'users#downgrade', as: :downgrade
   end
+
+  resources :wikis
+  resources :subscriptions
 
 
   get 'about' => 'welcome#about'
